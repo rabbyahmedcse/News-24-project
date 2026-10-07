@@ -18,17 +18,26 @@ const UserInfo = () => {
   if (session?.user) {
     return (
       <div className="absolute top-4 right-5 grid grid-cols-1 items-center gap-2">
-        <Link href={'/profile'}>
-        <Avatar>
-        <Avatar.Image alt="John Doe" src={session?.user.image} />
-        <Avatar.Fallback>JD</Avatar.Fallback>
-      </Avatar>
+        {/* Profile */}
+        <Link href="/profile">
+          <Avatar>
+            <Avatar.Image
+              alt={session.user.name || "User"}
+              src={session.user.image || undefined}
+            />
+
+            <Avatar.Fallback>
+              {session.user.name?.charAt(0).toUpperCase() || "U"}
+            </Avatar.Fallback>
+          </Avatar>
         </Link>
 
+        {/* Name */}
         <span className="max-w-[190px] truncate text-sm font-medium text-gray-800">
-          {session?.user.name}
+          {session.user.name}
         </span>
 
+        {/* Sign Out */}
         <Button
           size="sm"
           onPress={() => signOut()}

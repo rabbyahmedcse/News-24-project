@@ -12,7 +12,7 @@ const ProfilePage = () => {
   // Loading
   if (isPending) {
     return (
-      <div className="min-h-[70vh] flex items-center justify-center">
+      <div className="flex min-h-[70vh] items-center justify-center">
         <Spinner size="lg" />
       </div>
     );
@@ -21,7 +21,7 @@ const ProfilePage = () => {
   // User not logged in
   if (!user) {
     return (
-      <div className="min-h-[70vh] flex items-center justify-center px-4">
+      <div className="flex min-h-[70vh] items-center justify-center px-4">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-800">
             You are not signed in
@@ -42,11 +42,10 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className="min-h-[70vh] flex items-center justify-center bg-gray-100 px-4 py-10">
-
+    <div className="flex min-h-[70vh] items-center justify-center bg-gray-100 px-4 py-10">
       {/* Profile Card */}
-      <div className="w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-xl border border-gray-200">
-
+      <div className="w-full max-w-md overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl">
+        
         {/* Top Section */}
         <div className="h-32 bg-gradient-to-r from-blue-600 to-indigo-600" />
 
@@ -55,22 +54,24 @@ const ProfilePage = () => {
 
           {/* Avatar */}
           <div className="-mt-16 flex justify-center">
-        
-        <Avatar  className="h-32 w-32 border-4 border-white text-3xl shadow-lg">
-                <Avatar.Image  alt="John Doe" src={session?.user.image} />
-                <Avatar.Fallback>JD</Avatar.Fallback>
-              </Avatar>
-             
-          
+            <Avatar className="h-32 w-32 border-4 border-white text-3xl shadow-lg">
+              <Avatar.Image
+                alt={user.name || "User"}
+                src={user.image || undefined}
+              />
+
+              <Avatar.Fallback>
+                {user.name?.charAt(0).toUpperCase() || "U"}
+              </Avatar.Fallback>
+            </Avatar>
           </div>
 
-          {/* Name */}
+          {/* Name & Email */}
           <div className="mt-5 text-center">
             <h1 className="text-2xl font-bold text-gray-900">
               {user.name}
             </h1>
 
-            {/* Email */}
             <p className="mt-2 text-sm text-gray-500">
               {user.email}
             </p>
@@ -111,18 +112,14 @@ const ProfilePage = () => {
                 {user.image || "No profile image"}
               </p>
             </div>
-
           </div>
 
           {/* Edit Profile Button */}
-        <Link href={'/UpdateProfile'}>
-        <Button
-            className="mt-7 w-full bg-blue-600 font-semibold text-white hover:bg-blue-700"
-          >
-            Edit Profile
-          </Button>
-        </Link>
-
+          <Link href="/UpdateProfile">
+            <Button className="mt-7 w-full bg-blue-600 font-semibold text-white hover:bg-blue-700">
+              Edit Profile
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

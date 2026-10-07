@@ -31,7 +31,6 @@ const SingUpPage = () => {
       email: data.email as string,
       password: data.password as string,
       image: data.image as string,
-      rememberMe: true,
       callbackURL: "/",
     });
  if(resData){
