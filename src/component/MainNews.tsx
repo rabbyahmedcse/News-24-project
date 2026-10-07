@@ -10,7 +10,7 @@ interface NewsCardProps {
   imageUrl: string;
   imageAlt: string;
   category: string;
-  firstPublished?: string;
+  firstPublished?: string | null;
 }
 
 const MainNews = ({ news }: { news: NewsCardProps[] }) => {
