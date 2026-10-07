@@ -20,7 +20,7 @@ export const auth = betterAuth({
   // Allow local development and Vercel deployment
   trustedOrigins: [
     "http://localhost:3000",
-    "https://news-24-project-kepl-i0k7ulcn5-evan-8cba.vercel.app",
+    "https://news-24-project-kepl-r2pr272pi-evan-8cba.vercel.app",
   ],
 
   socialProviders: {
