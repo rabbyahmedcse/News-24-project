@@ -45,7 +45,7 @@ const UpdateProfile = () => {
     {/* Current Avatar */}
     <div className="flex justify-center mb-4">
     <Avatar  className="h-32 w-32 border-4 border-white text-3xl shadow-lg">
-                <Avatar.Image  alt="John Doe" src={user?.image} />
+                <Avatar.Image  alt="John Doe" src={user?.image || ""} />
                 <Avatar.Fallback>JD</Avatar.Fallback>
               </Avatar>
     </div>
@@ -104,7 +104,7 @@ const UpdateProfile = () => {
     {/* Email - Read Only */}
     <TextField
       name="email"
-      defaultValue={user?.email}
+      defaultValue={user?.email || ""}
       isReadOnly
     >
       <Label className="font-medium text-gray-800">
